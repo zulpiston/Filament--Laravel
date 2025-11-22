@@ -28,4 +28,26 @@ class UserForm
                     ->required(),
             ]);
     }
+    
 }
+
+class GaleriaForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                TextInput::make('title'),
+                FileUpload::make('images')
+                    ->multiple()
+                    ->directory('Galeria')
+                    ->images()
+                    ->maxFiles(20)
+                    ->reorderable()
+                    ->imageEditor()
+                    ->maxSize(5120)
+                    ->visibility('public')
+            ]);
+    }
+}
+
